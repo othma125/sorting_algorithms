@@ -6,19 +6,21 @@
  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *node;
+	listint_t *node, *tmp;
 
-	if (!list || !*list || !list->next)
+	if (!list || !(*list) || !(*list)->next)
 		return;
-	node = *list;
+	node = (*list)->next;
 	while (node)
 	{
-		for (i = 0; i + 1 < n; i++)
+		for (tmp = list; tmp->next != node; tmp=tmp->next)
 		{
-			if (array[i] > array[i + 1])
+			if (tmp->n > node->n)
 			{
-				swap(array + i, array + i + 1);
-				print_array(array, size);
+				node->prev->next = node->next;
+				if (node->next)
+					node->next->prev = node->prev;
+				print_list(*list);
 			}
 		}
 		node = node->next;
