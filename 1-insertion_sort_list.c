@@ -13,14 +13,23 @@ void insertion_sort_list(listint_t **list)
 	node = (*list)->next;
 	while (node)
 	{
-		for (tmp = list; tmp->next != node; tmp = tmp->next)
+		for (tmp = node->prev; tmp; tmp = tmp->prev)
 		{
-			if (tmp->n > node->n)
+			if (tmp->n > node->n
+				&& (!tmp->prev || tmp->prev->n <= node->n)
 			{
 				node->prev->next = node->next;
 				if (node->next)
 					node->next->prev = node->prev;
+				node->next = tmp;
+				tmp->prev = node;
+				if (tmp->prev)
+				{
+					tmp->prev->next = node;
+					temp
+				}
 				print_list(*list);
+				break;
 			}
 		}
 		node = node->next;
