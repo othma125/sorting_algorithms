@@ -22,12 +22,17 @@ void insertion_sort_list(listint_t **list)
 				if (node->next)
 					node->next->prev = node->prev;
 				node->next = tmp;
-				tmp->prev = node;
 				if (tmp->prev)
 				{
 					tmp->prev->next = node;
-					temp
+					node->prev = tmp->prev;
 				}
+				else
+				{
+					*list = node;
+					node->prev = NULL;
+				}
+				tmp->prev = node;
 				print_list(*list);
 				break;
 			}
