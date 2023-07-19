@@ -6,26 +6,28 @@
  */
 void cocktail_sort_list(listint_t **list)
 {
-	listint_t *node, *next_node, *prev_node;
+	listint_t *node, *next_n, *prev_n;
 	int swpd;
 
 	if (!list || !(*list) || !(*list)->next)
 		return;
-	node = (*list);
+	node = *list;
 	do {
 		swpd = 0;
 		for (; node->next; node = node->next)
 		{
 			if (node->n > node->next->n)
 			{
-				swpd = 1, next_node = node->next;
-				node->next = next_node->next;
-				node->prev = next_node;
-				next_node->prev = node->prev;
-				next_node->next = node;
-				if (!next_node->prev)
-					*list = next_node;
-				print_list(*list);
+				swpd = 1, next_n = node->next, node->next = next_n->next;
+				if (next_n->next)
+					next_n->next->prev = node;
+				next_n->prev = node->prev;
+				if (node->prev)
+					node->prev->next = next_n;
+				node->prev = next_n, next_n->next = node;
+				if (!next_n->prev)
+					*list = next_n;
+				print_list(*list), node = next_n;
 			}
 		}
 		if (!swpd)
@@ -34,14 +36,16 @@ void cocktail_sort_list(listint_t **list)
 		{
 			if (node->n < node->prev->n)
 			{
-				swpd = 1, prev_node = node->prev;
-				prev_node->next = node->next;
-				prev_node->prev = node;
-				node->prev = prev_node->prev;
-				node->next = prev_node;
+				swpd = 1, prev_n = node->prev, prev_n->next = node->next;
+				if (node->next)
+					node->next->prev = prev_n;
+				node->prev = prev_n->prev;
+				if (prev_n->prev)
+					prev_n->prev->next = node;
+				prev_n->prev = node, node->next = prev_n;
 				if (!node->prev)
 					*list = node;
-				print_list(*list);
+				print_list(*list), node = prev_n;
 			}
 		}
 	} while (swpd);
