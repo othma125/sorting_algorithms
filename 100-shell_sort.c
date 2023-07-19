@@ -33,6 +33,6 @@ void shell_sort(int *array, size_t size)
 				swap(array + j, array + j - h);
 		}
 		h /= 3;
-	        print_array(array, size);
+		print_array(array, size);
 	}
 }
