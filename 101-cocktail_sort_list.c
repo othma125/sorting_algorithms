@@ -43,7 +43,7 @@ void cocktail_sort_list(listint_t **list)
 				swpd = 1;
 				next_n = node->next;
 				swap_list(list, node, next_n);
-				node = node2
+				node = next_n;
 			}
 		}
 		if (!swpd)
