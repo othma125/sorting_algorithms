@@ -1,8 +1,30 @@
 #include "sort.h"
 
+
+/**
+ * swap_list - swap
+ * @list: list
+ * @node1: list
+ * @node2: list
+ * Return: nothing
+ */
+void swap_list(listint_t **list, listint_t *node1, listint_t *node2)
+{
+	node1->next = node2->next;
+	if (node2->next)
+		node2->next->prev = node1;
+	node2->prev = node1->prev;
+	if (node1->prev)
+		node1->prev->next = node2;
+	node1->prev = node2, node2->next = node1;
+	if (!node2->prev)
+		*list = node2;
+	print_list(*list);
+}
 /**
  * cocktail_sort_list - insertion sort algorithm
  * @list: list
+ * Return: nothing
  */
 void cocktail_sort_list(listint_t **list)
 {
@@ -18,16 +40,10 @@ void cocktail_sort_list(listint_t **list)
 		{
 			if (node->n > node->next->n)
 			{
-				swpd = 1, next_n = node->next, node->next = next_n->next;
-				if (next_n->next)
-					next_n->next->prev = node;
-				next_n->prev = node->prev;
-				if (node->prev)
-					node->prev->next = next_n;
-				node->prev = next_n, next_n->next = node;
-				if (!next_n->prev)
-					*list = next_n;
-				print_list(*list), node = next_n;
+				swpd = 1;
+				next_n = node->next;
+				swap_list(list, node, next_n);
+				node = node2
 			}
 		}
 		if (!swpd)
@@ -36,16 +52,10 @@ void cocktail_sort_list(listint_t **list)
 		{
 			if (node->n < node->prev->n)
 			{
-				swpd = 1, prev_n = node->prev, prev_n->next = node->next;
-				if (node->next)
-					node->next->prev = prev_n;
-				node->prev = prev_n->prev;
-				if (prev_n->prev)
-					prev_n->prev->next = node;
-				prev_n->prev = node, node->next = prev_n;
-				if (!node->prev)
-					*list = node;
-				print_list(*list), node = prev_n;
+				swpd = 1;
+				prev_n = node->prev;
+				swap_list(list, prev_n, node);
+				node = prev_n;
 			}
 		}
 	} while (swpd);
