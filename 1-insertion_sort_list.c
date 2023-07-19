@@ -6,17 +6,17 @@
  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *node, *tmp;
+	listint_t *node, *tmp, *ins;
 
 	if (!list || !(*list) || !(*list)->next)
 		return;
-	node = (*list)->next;
-	while (node)
+	ins = (*list)->next;
+	while (ins)
 	{
+		node = ins;
 		for (tmp = node->prev; tmp; tmp = tmp->prev)
 		{
-			if (tmp->n > node->n
-				&& (!tmp->prev || tmp->prev->n <= node->n))
+			if (tmp->n > node->n)
 			{
 				node->prev->next = node->next;
 				if (node->next)
@@ -34,9 +34,9 @@ void insertion_sort_list(listint_t **list)
 				}
 				tmp->prev = node;
 				print_list(*list);
-				break;
+				node = tmp;
 			}
 		}
-		node = node->next;
+		ins = ins->next;
 	}
 }
