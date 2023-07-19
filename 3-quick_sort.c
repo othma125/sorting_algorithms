@@ -13,28 +13,66 @@ void swap(int *a, int *b)
 	*b = aux;
 }
 /**
- * bubble_sort - bubble_sort algorithm
- * @array: int array
- * @size: array size
+ * partition - lomuto partition.
+ * @array: The array of integers.
+ * @size: The size of the array.
+ * @x: integer.
+ * @y: integer.
+ * Return: partition index
  */
-void bubble_sort(int *array, size_t size)
+size_t partition(int *array, size_t size, size_t x, size_t y)
 {
-	size_t n = size, i;
-	int *ptr;
+	int pivot;
+	size_t i = x, j;
 
+	pivot = array[y];
+	for (j = x; j < y; j++)
+	{
+		if (array[j] < pivot)
+		{
+			swap(array + j, array + y);
+			print_array(array, size);
+			i++;
+		}
+	}
+
+	if (array[y] > pivot)
+	{
+		swap(array + i, array + y);
+		print_array(array, size);
+	}
+	return (i);
+}
+
+/**
+ * lomuto_sort - Implement the quicksort algorithm through recursion.
+ * @array: An array of integers to sort.
+ * @size: The size of the array.
+ * @x: The starting index of the array partition to order.
+ * @y: The ending index of the array partition to order.
+ * Return: nothing.
+ */
+void sort(int *array, size_t size, size_t x, size_t y)
+{
+	size_t p;
+
+	if (x < y)
+	{
+		p = partition(array, size, x, y);
+		sort(array, size, x, p - 1);
+		sort(array, size, p + 1, y);
+	}
+}
+
+/**
+ * quick_sort - quicksort algorithm.
+ * @array: An array of integers.
+ * @size: The size of the array.
+ * Return: nothing.
+ */
+void quick_sort(int *array, size_t size)
+{
 	if (!array || size < 2)
 		return;
-	while (n > 1)
-	{
-		ptr = array;
-		for (i = 0; i + 1 < n; i++, ptr++)
-		{
-			if (*ptr > *(ptr + 1))
-			{
-				swap(ptr, ptr + 1);
-				print_array(array, size);
-			}
-		}
-		n--;
-	}
+	sort(array, size, 0, size - 1);
 }
