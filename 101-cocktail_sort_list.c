@@ -18,8 +18,7 @@ void cocktail_sort_list(listint_t **list)
 		{
 			if (node->n > node->next->n)
 			{
-				swpd = 1;
-				next_node = node->next;
+				swpd = 1, next_node = node->next;
 				node->next = next_node->next;
 				node->prev = next_node;
 				next_node->prev = node->prev;
@@ -35,8 +34,7 @@ void cocktail_sort_list(listint_t **list)
 		{
 			if (node->n < node->prev->n)
 			{
-				swpd = 1;
-				prev_node = node->prev;
+				swpd = 1, prev_node = node->prev;
 				prev_node->next = node->next;
 				prev_node->prev = node;
 				node->prev = prev_node->prev;
