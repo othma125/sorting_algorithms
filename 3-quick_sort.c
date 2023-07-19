@@ -20,41 +20,38 @@ void swap(int *a, int *b)
  * @y: integer.
  * Return: partition index
  */
-size_t partition(int *array, size_t size, size_t x, size_t y)
+int partition(int *array, size_t size, int x, int y)
 {
-	int pivot;
-	size_t i = x, j;
+	int *pivot;
+	int i = x;
+	int j;
 
-	pivot = array[y];
+	pivot = array + y;
 	for (j = x; j < y; j++)
 	{
-		if (array[j] < pivot)
+		if (array[j] < *pivot)
 		{
-			swap(array + j, array + y);
+			swap(array + j, array + i);
 			print_array(array, size);
 			i++;
 		}
 	}
-
-	if (array[y] > pivot)
-	{
-		swap(array + i, array + y);
-		print_array(array, size);
-	}
+	swap(array + i, array + y);
+	print_array(array, size);
 	return (i);
 }
 
 /**
- * lomuto_sort - Implement the quicksort algorithm through recursion.
+ * sort - Implement the quicksort algorithm through recursion.
  * @array: An array of integers to sort.
  * @size: The size of the array.
  * @x: The starting index of the array partition to order.
  * @y: The ending index of the array partition to order.
  * Return: nothing.
  */
-void sort(int *array, size_t size, size_t x, size_t y)
+void sort(int *array, size_t size, int x, int y)
 {
-	size_t p;
+	int p;
 
 	if (x < y)
 	{
