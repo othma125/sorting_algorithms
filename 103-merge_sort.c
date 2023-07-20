@@ -13,16 +13,16 @@ void TopDownMerge(int *a, int *b, size_t i, size_t k, size_t j)
 
 	for (l = i; l < j; l++)
 	{
-	        if (x < k && (x >= j || a[x] <= a[y]))
+		if (x < k && (x >= j || a[x] <= a[y]))
 		{
 			b[l] = a[x];
 			x++;
-	        }
+		}
 		else
 		{
 			b[l] = a[j];
 			y++;
-	        }
+		}
 	}
 }
 /**
