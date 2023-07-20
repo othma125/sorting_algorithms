@@ -23,7 +23,7 @@ int max(int *a, size_t size)
  */
 void counting_sort(int *array, size_t size)
 {
-	size_t j = size, i;
+	size_t i;
 	int k, *count, *output;
 
 	if (!array || size < 2)
@@ -32,13 +32,14 @@ void counting_sort(int *array, size_t size)
 	count = malloc((k + 1) * sizeof(int));
 	for (i = 0; i < size; i++)
 		count[array[i]]++;
-	for (i = 1; i < k; i++)
+	for (i = 1; I < (size_t)k; i++)
 		count[i] = count[i] + count[i - 1];
 	print_array(count, k + 1);
 	output = malloc(size * sizeof(int));
-	while (n > 0)
+	i = size;
+	while (i > 0)
 	{
-		n--;
+		i--;
 		count[array[i]]--;
 		output[count[array[i]]] = array[i];
 	}
