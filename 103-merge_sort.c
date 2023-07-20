@@ -1,4 +1,5 @@
 #include "sort.h"
+#include <stdio.h>
 
 /**
  * TopDownMerge - check code.
@@ -8,23 +9,39 @@
  * @k: middle bound index.
  * @j: up bound index.
  */
-void TopDownMerge(int *a, int *b, size_t i, size_t k, size_t j)
+void TopDownMerge(int *b, int *a, size_t i, size_t k, size_t j)
 {
-	size_t x = i, y = j, l;
+	size_t x = i, y = k, l;
+	int c = 1;
 
+	printf("Merging...\n");
+	printf("[left]: ");
 	for (l = i; l < j; l++)
 	{
 		if (x < k && (x >= j || a[x] <= a[y]))
 		{
-			b[l] = a[x];
-			x++;
+			b[l] = a[x], x++;
+			printf("%d, ", a[l]);
 		}
 		else
 		{
-			b[l] = a[j];
-			y++;
+			if (c)
+				printf("\n[right]: ");
+			b[l] = a[y], y++;
+			printf("%d, ", a[l]);
+			c = 0;
 		}
 	}
+        printf("\n[Done]: ");
+	c = 0;
+	for (l = i; l < j; l++)
+	{
+		if (c)
+			printf(", ");
+		c = 1;
+		printf("%d", a[l]);
+	}
+        printf("\n");
 }
 /**
  * TopDownSplitMerge - check code.
@@ -33,16 +50,16 @@ void TopDownMerge(int *a, int *b, size_t i, size_t k, size_t j)
  * @i: low bound index.
  * @j: up bound index.
  */
-void TopDownSplitMerge(int *a, int *b, size_t i, size_t j)
+void TopDownSplitMerge(int *b, int *a, size_t i, size_t j)
 {
 	size_t k;
 
 	if (j - i <= 1)
 		return;
-	k = i + (j - i) / 2;
+	k = (j + i) / 2;
 	TopDownSplitMerge(a, b, i, k);
 	TopDownSplitMerge(a, b, k, j);
-	TopDownMerge(a, b, i, k, j);
+	TopDownMerge(b, a, i, k, j);
 }
 /**
  * CopyArray - check code.
@@ -66,10 +83,13 @@ void CopyArray(int *a, int *b, size_t i, size_t j)
 void merge_sort(int *a, size_t size)
 {
 	int *b;
+	size_t i = 0;
 
 	if (!a || size < 2)
 		return;
 	b = malloc(size * sizeof(int));
+	for (i = 0; i < sizeof(b); i++)
+		b[i] = 0;
 	CopyArray(a, b, 0, size);
 	TopDownSplitMerge(a, b, 0, size);
 	free(b);
