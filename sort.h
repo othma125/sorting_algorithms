@@ -27,6 +27,8 @@ void selection_sort(int *, size_t);
 void quick_sort(int *, size_t);
 void shell_sort(int *, size_t);
 void cocktail_sort_list(listint_t **);
+void counting_sort(int *, size_t);
+
 
 
 #endif
