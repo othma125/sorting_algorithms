@@ -67,19 +67,6 @@ void TopDownSplitMerge(int *b, int *a, size_t i, size_t j)
 	TopDownMerge(b, a, i, k, j);
 }
 /**
- * CopyArray - check code.
- * @a: The first integer to swap.
- * @b: The second integer to swap.
- * @size: low bound index.
- */
-void CopyArray(int *a, int *b, size_t size)
-{
-	size_t k;
-
-	for (k = 0; k < size; k++)
-		b[k] = a[k];
-}
-/**
  * merge_sort - merge_sort algorithm
  * @a: int array
  * @size: array size
@@ -93,8 +80,7 @@ void merge_sort(int *a, size_t size)
 		return;
 	b = malloc(size * sizeof(int));
 	for (i = 0; i < sizeof(b); i++)
-		b[i] = 0;
-	CopyArray(a, b, size);
+		b[i] = a[i];
 	TopDownSplitMerge(a, b, 0, size);
 	free(b);
 }
