@@ -3,11 +3,11 @@
 
 /**
  * print - check code.
- * @a: The first integer to swap.
+ * @array: The first integer to swap.
  * @i: low bound index.
  * @j: up bound index.
  */
-void print(int *a, size_t i, size_t j)
+void print(int *array, size_t i, size_t j)
 {
 	int c = 0;
 	size_t l;
@@ -17,7 +17,7 @@ void print(int *a, size_t i, size_t j)
 		if (c)
 			printf(", ");
 		c = 1;
-		printf("%d", a[l]);
+		printf("%d", array[l]);
 	}
 }
 /**
@@ -30,22 +30,29 @@ void print(int *a, size_t i, size_t j)
  */
 void TopDownMerge(int *b, int *a, size_t i, size_t k, size_t j)
 {
-	size_t x = i, y = k, l;
+	size_t x = i, y = k, l = i;
 
 	printf("Merging...\n");
-	for (l = i; l < j; l++)
+	while (l < j)
 	{
 		if (x < k && (x >= j || a[x] <= a[y]))
-			b[l] = a[x], x++;
+		{
+			b[l] = a[x];
+			x++;
+		}
 		else
-			b[l] = a[y], y++;
+		{
+			b[l] = a[y];
+			y++;
+		}
+		l++;
 	}
 	printf("[left]: ");
-	print(b, i, k);
+	print(a, i, k);
 	printf("\n[right]: ");
-	print(b, k, j);
+	print(a, k, j);
 	printf("\n[Done]: ");
-	print(b, i, j);
+	print(a, i, j);
 	printf("\n");
 }
 /**
