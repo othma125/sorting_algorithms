@@ -28,9 +28,9 @@ void print(int *a, size_t i, size_t j)
  * @k: middle bound index.
  * @j: up bound index.
  */
-void TopDownMerge(int *b, int *a, size_t i, size_t k, size_t j)
+void TopDownMerge(int *b, int *a, int i, int k, int j)
 {
-	size_t x = i, y = k, l;
+	int x = i, y = k, l;
 
 	printf("Merging...\n");
 	for (l = i; l < j; l++)
@@ -55,13 +55,13 @@ void TopDownMerge(int *b, int *a, size_t i, size_t k, size_t j)
  * @i: low bound index.
  * @j: up bound index.
  */
-void TopDownSplitMerge(int *b, int *a, size_t i, size_t j)
+void TopDownSplitMerge(int *b, int *a, int i, int j)
 {
-	size_t k;
+	int k;
 
 	if (j - i <= 1)
 		return;
-	k = (size_t)((j + i) / 2);
+	k = (j + i) / 2;
 	TopDownSplitMerge(a, b, i, k);
 	TopDownSplitMerge(a, b, k, j);
 	TopDownMerge(b, a, i, k, j);
@@ -74,13 +74,13 @@ void TopDownSplitMerge(int *b, int *a, size_t i, size_t j)
 void merge_sort(int *a, size_t size)
 {
 	int *b;
-	size_t i = 0;
+	int i = 0;
 
 	if (!a || size < 2)
 		return;
 	b = malloc(sizeof(int) * size);
-	for (i = 0; i < size; i++)
+	for (i = 0; (size_t)i < size; i++)
 		b[i] = a[i];
-	TopDownSplitMerge(a, b, 0, size);
+	TopDownSplitMerge(a, b, 0, (int)size);
 	free(b);
 }
