@@ -62,8 +62,8 @@ void TopDownSplitMerge(int *b, int *a, size_t i, size_t j)
 	if (j - i <= 1)
 		return;
 	k = (j + i) / 2;
-	TopDownSplitMerge(a, b, i, k);
 	TopDownSplitMerge(a, b, k, j);
+	TopDownSplitMerge(a, b, i, k);
 	TopDownMerge(b, a, i, k, j);
 }
 /**
