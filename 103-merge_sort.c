@@ -1,10 +1,11 @@
 #include "sort.h"
 
 /**
- * TopDownSplitMerge - check code.
+ * TopDownMerge - check code.
  * @a: The first integer to swap.
  * @b: The second integer to swap.
  * @i: low bound index.
+ * @k: middle bound index.
  * @j: up bound index.
  */
 void TopDownMerge(int *a, int *b, size_t i, size_t k, size_t j)
