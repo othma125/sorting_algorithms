@@ -1,40 +1,76 @@
 #include "sort.h"
 
 /**
- * swap - Swap two integers in an array.
+ * TopDownSplitMerge - check code.
  * @a: The first integer to swap.
  * @b: The second integer to swap.
+ * @i: low bound index.
+ * @j: up bound index.
  */
-void swap(int *a, int *b)
+void TopDownMerge(int *a, int *b, size_t i, size_t k, size_t j)
 {
-	int aux = *a;
+	size_t x = i, y = j, l;
 
-	*a = *b;
-	*b = aux;
+	for (l = i; l < j; l++)
+	{
+	        if (x < k && (x >= j || a[x] <= a[y]))
+		{
+			b[l] = a[x];
+			x++;
+	        }
+		else
+		{
+			b[l] = a[j];
+			y++;
+	        }
+	}
 }
 /**
- * bubble_sort - bubble_sort algorithm
- * @array: int array
+ * TopDownSplitMerge - check code.
+ * @a: The first integer to swap.
+ * @b: The second integer to swap.
+ * @i: low bound index.
+ * @j: up bound index.
+ */
+void TopDownSplitMerge(int *a, int *b, size_t i, size_t j)
+{
+	size_t k;
+
+	if (j - i <= 1)
+		return;
+	k = i + (j - i) / 2;
+	TopDownSplitMerge(a, b, i, k);
+	TopDownSplitMerge(a, b, k, j);
+	TopDownMerge(a, b, i, k, j);
+}
+/**
+ * CopyArray - check code.
+ * @a: The first integer to swap.
+ * @b: The second integer to swap.
+ * @i: low bound index.
+ * @j: up bound index.
+ */
+void CopyArray(int *a, int *b, size_t i, size_t j)
+{
+	size_t k;
+
+	for (k = i; k < j; k++)
+		b[k] = a[k];
+}
+/**
+ * merge_sort - merge_sort algorithm
+ * @a: int array
  * @size: array size
  */
-void bubble_sort(int *array, size_t size)
+void merge_sort(int *a, size_t size)
 {
-	size_t n = size, i;
-	int *ptr;
+	int *b;
 
 	if (!array || size < 2)
 		return;
-	while (n > 1)
-	{
-		ptr = array;
-		for (i = 0; i + 1 < n; i++, ptr++)
-		{
-			if (*ptr > *(ptr + 1))
-			{
-				swap(ptr, ptr + 1);
-				print_array(array, size);
-			}
-		}
-		n--;
-	}
+	b = malloc(size * sizeof(int));
+	CopyArray(a, b, 0, size)
+	TopDownSplitMerge(a, b, 0, size);
+	CopyArray(b, a, 0, size)
+	free(b);
 }
