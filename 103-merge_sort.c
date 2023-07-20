@@ -72,6 +72,5 @@ void merge_sort(int *a, size_t size)
 	b = malloc(size * sizeof(int));
 	CopyArray(a, b, 0, size);
 	TopDownSplitMerge(a, b, 0, size);
-	CopyArray(b, a, 0, size);
 	free(b);
 }
