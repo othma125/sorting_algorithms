@@ -44,9 +44,9 @@ void TopDownMerge(int *b, int *a, size_t i, size_t k, size_t j)
 	print(b, i, k);
 	printf("\n[right]: ");
 	print(b, k, j);
-        printf("\n[Done]: ");
+	printf("\n[Done]: ");
 	print(b, i, j);
-        printf("\n");
+	printf("\n");
 }
 /**
  * TopDownSplitMerge - check code.
