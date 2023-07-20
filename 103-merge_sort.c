@@ -7,9 +7,10 @@
  * @i: low bound index.
  * @j: up bound index.
  */
-void print(int *a, int i, int j)
+void print(int *a, size_t i, size_t j)
 {
 	int c = 0;
+	size_t l;
 
 	for (l = i; l < j; l++)
 	{
@@ -40,11 +41,11 @@ void TopDownMerge(int *b, int *a, size_t i, size_t k, size_t j)
 			b[l] = a[y], y++;
 	}
 	printf("[left]: ");
-	print(a, i, k);
+	print(b, i, k);
 	printf("\n[right]: ");
-	print(a, k, j);
+	print(b, k, j);
         printf("\n[Done]: ");
-	print(a, i, j);
+	print(b, i, j);
         printf("\n");
 }
 /**
