@@ -2,6 +2,24 @@
 #include <stdio.h>
 
 /**
+ * print - check code.
+ * @a: The first integer to swap.
+ * @i: low bound index.
+ * @j: up bound index.
+ */
+void print(int *a, int i, int j)
+{
+	int c = 0;
+
+	for (l = i; l < j; l++)
+	{
+		if (c)
+			printf(", ");
+		c = 1;
+		printf("%d", a[l]);
+	}
+}
+/**
  * TopDownMerge - check code.
  * @a: The first integer to swap.
  * @b: The second integer to swap.
@@ -12,35 +30,21 @@
 void TopDownMerge(int *b, int *a, size_t i, size_t k, size_t j)
 {
 	size_t x = i, y = k, l;
-	int c = 1;
 
 	printf("Merging...\n");
-	printf("[left]: ");
 	for (l = i; l < j; l++)
 	{
 		if (x < k && (x >= j || a[x] <= a[y]))
-		{
 			b[l] = a[x], x++;
-			printf("%d, ", a[l]);
-		}
 		else
-		{
-			if (c)
-				printf("\n[right]: ");
 			b[l] = a[y], y++;
-			printf("%d, ", a[l]);
-			c = 0;
-		}
 	}
+	printf("[left]: ");
+	print(a, i, k);
+	printf("\n[right]: ");
+	print(a, k, j);
         printf("\n[Done]: ");
-	c = 0;
-	for (l = i; l < j; l++)
-	{
-		if (c)
-			printf(", ");
-		c = 1;
-		printf("%d", a[l]);
-	}
+	print(a, i, j);
         printf("\n");
 }
 /**
