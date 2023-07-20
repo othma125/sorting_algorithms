@@ -67,11 +67,11 @@ void merge_sort(int *a, size_t size)
 {
 	int *b;
 
-	if (!array || size < 2)
+	if (!a || size < 2)
 		return;
 	b = malloc(size * sizeof(int));
-	CopyArray(a, b, 0, size)
+	CopyArray(a, b, 0, size);
 	TopDownSplitMerge(a, b, 0, size);
-	CopyArray(b, a, 0, size)
+	CopyArray(b, a, 0, size);
 	free(b);
 }
