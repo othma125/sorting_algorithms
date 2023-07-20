@@ -32,7 +32,7 @@ void counting_sort(int *array, size_t size)
 	count = malloc((k + 1) * sizeof(int));
 	for (i = 0; i < size; i++)
 		count[array[i]]++;
-	for (i = 1; I < (size_t)k; i++)
+	for (i = 1; i < (size_t)k; i++)
 		count[i] = count[i] + count[i - 1];
 	print_array(count, k + 1);
 	output = malloc(size * sizeof(int));
