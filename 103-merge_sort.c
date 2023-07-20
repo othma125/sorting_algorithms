@@ -78,7 +78,7 @@ void merge_sort(int *a, size_t size)
 
 	if (!a || size < 2)
 		return;
-	b = malloc(sizeof(b));
+	b = malloc(sizeof(int) * size);
 	for (i = 0; i < size; i++)
 		b[i] = a[i];
 	TopDownSplitMerge(a, b, 0, size);
