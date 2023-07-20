@@ -35,7 +35,7 @@ void TopDownMerge(int *b, int *a, size_t i, size_t k, size_t j)
 	printf("Merging...\n");
 	while (l < j)
 	{
-		if (x < k && (x >= j || a[x] <= a[y]))
+		if (x < k && (y >= j || a[x] <= a[y]))
 		{
 			b[l] = a[x];
 			x++;
@@ -48,11 +48,11 @@ void TopDownMerge(int *b, int *a, size_t i, size_t k, size_t j)
 		l++;
 	}
 	printf("[left]: ");
-	print(a, i, k);
+	print(b, i, k);
 	printf("\n[right]: ");
-	print(a, k, j);
+	print(b, k, j);
 	printf("\n[Done]: ");
-	print(a, i, j);
+	print(b, i, j);
 	printf("\n");
 }
 /**
