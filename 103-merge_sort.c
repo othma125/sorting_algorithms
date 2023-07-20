@@ -28,9 +28,9 @@ void print(int *a, size_t i, size_t j)
  * @k: middle bound index.
  * @j: up bound index.
  */
-void TopDownMerge(int *b, int *a, int i, int k, int j)
+void TopDownMerge(int *b, int *a, size_t i, size_t k, size_t j)
 {
-	int x = i, y = k, l;
+	size_t x = i, y = k, l;
 
 	printf("Merging...\n");
 	for (l = i; l < j; l++)
@@ -55,9 +55,9 @@ void TopDownMerge(int *b, int *a, int i, int k, int j)
  * @i: low bound index.
  * @j: up bound index.
  */
-void TopDownSplitMerge(int *b, int *a, int i, int j)
+void TopDownSplitMerge(int *b, int *a, size_t i, size_t j)
 {
-	int k;
+	size_t k;
 
 	if (j - i <= 1)
 		return;
@@ -74,13 +74,13 @@ void TopDownSplitMerge(int *b, int *a, int i, int j)
 void merge_sort(int *a, size_t size)
 {
 	int *b;
-	int i = 0;
+	size_t i = 0;
 
 	if (!a || size < 2)
 		return;
 	b = malloc(sizeof(int) * size);
-	for (i = 0; (size_t)i < size; i++)
+	for (i = 0; i < size; i++)
 		b[i] = a[i];
-	TopDownSplitMerge(a, b, 0, (int)size);
+	TopDownSplitMerge(a, b, 0, size);
 	free(b);
 }
