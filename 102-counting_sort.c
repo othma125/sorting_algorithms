@@ -1,40 +1,48 @@
 #include "sort.h"
+#include <limits.h>
 
 /**
- * swap - Swap two integers in an array.
- * @a: The first integer to swap.
- * @b: The second integer to swap.
- */
-void swap(int *a, int *b)
-{
-	int aux = *a;
-
-	*a = *b;
-	*b = aux;
-}
-/**
- * bubble_sort - bubble_sort algorithm
+ * max - max value of an array.
  * @array: int array
  * @size: array size
  */
-void bubble_sort(int *array, size_t size)
+int max(int *a, size_t size)
 {
-	size_t n = size, i;
-	int *ptr;
+	int max = INT_MIN;
+	size_t i = 0;
+
+	for (i = 0; i < size; i++)
+		if (max < a[i])
+			max = a[i];
+	return (max);
+}
+/**
+ * counting_sort - bubble_sort algorithm
+ * @array: int array
+ * @size: array size
+ */
+void counting_sort(int *array, size_t size)
+{
+	size_t j = size, i;
+	int k, *count, *output;
 
 	if (!array || size < 2)
 		return;
-	while (n > 1)
+	k = max(array, size);
+	count = malloc((k + 1) * sizeof(int));
+	for (i = 0; i < size; i++)
+		count[array[i]]++;
+	for (i = 1; i < k; i++)
+		count[i] = count[i] + count[i - 1];
+	print_array(count, k + 1);
+	output = malloc(size * sizeof(int));
+	while (n > 0)
 	{
-		ptr = array;
-		for (i = 0; i + 1 < n; i++, ptr++)
-		{
-			if (*ptr > *(ptr + 1))
-			{
-				swap(ptr, ptr + 1);
-				print_array(array, size);
-			}
-		}
 		n--;
+		count[array[i]]--;
+		output[count[array[i]]] = array[i];
 	}
+	free(array);
+	array = output;
+	free(count);
 }
