@@ -13,7 +13,7 @@ void swap(int *a, int *b)
 	*b = aux;
 }
 /**
- * partition - lomuto partition.
+ * partition - hoare partition.
  * @array: The array of integers.
  * @size: The size of the array.
  * @x: integer.
@@ -22,29 +22,23 @@ void swap(int *a, int *b)
  */
 int partition(int *array, size_t size, int x, int y)
 {
-	int *pivot;
-	int i = x;
-	int j;
+	int *pivot = array + x + (y - x) / 2;
+	int i = x - 1;
+	int j = y + 1;
 
-	pivot = array + y;
-	for (j = x; j < y; j++)
+	while (1)
 	{
-		if (array[j] < *pivot)
-		{
-			if (i < j)
-			{
-				swap(array + j, array + i);
-				print_array(array, size);
-			}
+		do {
 			i++;
-		}
-	}
-	if (array[i] > *pivot)
-	{
-		swap(array + i, array + y);
+		} while (array[i] < *pivot);
+		do {
+			j--;
+		} while (array[j] > *pivot);
+		if (i >= j)
+			return (j);
+		swap(array + i, array + j);
 		print_array(array, size);
 	}
-	return (i);
 }
 
 /**
@@ -68,12 +62,12 @@ void sort(int *array, size_t size, int x, int y)
 }
 
 /**
- * quick_sort - quicksort algorithm.
+ * quick_sort_hoare - quicksort algorithm.
  * @array: An array of integers.
  * @size: The size of the array.
  * Return: nothing.
  */
-void quick_sort(int *array, size_t size)
+void quick_sort_hoare(int *array, size_t size)
 {
 	if (!array || size < 2)
 		return;
