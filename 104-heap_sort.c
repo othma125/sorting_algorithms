@@ -64,7 +64,7 @@ void heap_sort(int *a, size_t size)
 
 	if (!a || size < 2)
 		return;
-	heapify(a, n);
+	heapify(a, size);
 	while (n > 0)
 	{
 		swap(a, a + n);
