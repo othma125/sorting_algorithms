@@ -45,13 +45,11 @@ void sift_down(int *a, size_t start, size_t end, size_t size)
  */
 void heapify(int *a, size_t size)
 {
-	size_t start = (size - 2) / 2;
+	int start = (size - 2) / 2;
 
-	while (1)
+	while (start >= 0)
 	{
 		sift_down(a, start, size - 1, size);
-		if (start == 0)
-			break;
 		start--;
 	}
 }
