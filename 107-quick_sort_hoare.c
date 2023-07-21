@@ -34,7 +34,7 @@ int partition(int *array, size_t size, int x, int y)
 		do {
 			j--;
 		} while (array[j] > *pivot);
-		if (i >= j)
+		if (i > j)
 			return (j);
 		swap(array + i, array + j);
 		print_array(array, size);
@@ -56,8 +56,8 @@ void sort(int *array, size_t size, int x, int y)
 	if (x < y)
 	{
 		p = partition(array, size, x, y);
-		sort(array, size, x, p - 1);
-		sort(array, size, p, y);
+		sort(array, size, x, p);
+		sort(array, size, p + 1, y);
 	}
 }
 
