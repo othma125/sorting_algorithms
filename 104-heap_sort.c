@@ -29,7 +29,7 @@ void sift_down(int *a, size_t start, size_t end, size_t size)
 		swp = root;
 		if (a[swp] < a[child])
 			swp = child;
-		if (child + 1 ≤ end && a[swp] < a[child + 1])
+		if (child + 1 <= end && a[swp] < a[child + 1])
 			swp = child + 1;
 		if (root == swp)
 			return;
@@ -46,9 +46,11 @@ void heapify(int *a, size_t size)
 {
 	size_t start = (size - 2) / 2;
 
-	while (start >= 0)
+	while (1)
 	{
 		sift_down(a, start, size - 1, size);
+		if (start == 0)
+			break;
 		start--;
 	}
 }
