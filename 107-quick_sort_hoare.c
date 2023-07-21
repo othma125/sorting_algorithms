@@ -56,7 +56,7 @@ void sort(int *array, size_t size, int x, int y)
 	if (x >= 0 && y >= 0 && x < y)
 	{
 		p = partition(array, size, x, y);
-		sort(array, size, x, p);
+		sort(array, size, x, p - 1);
 		sort(array, size, p, y);
 	}
 }
