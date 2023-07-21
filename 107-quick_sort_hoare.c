@@ -53,11 +53,11 @@ void sort(int *array, size_t size, int x, int y)
 {
 	int p;
 
-	if (x >= 0 && y >= 0 && x < y)
+	if (x < y)
 	{
 		p = partition(array, size, x, y);
-		sort(array, size, p + 1, y);
 		sort(array, size, x, p);
+		sort(array, size, p + 1, y);
 	}
 }
 
