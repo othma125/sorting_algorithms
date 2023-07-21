@@ -21,19 +21,19 @@ void swap(int *a, int *b)
  */
 void sift_down(int *a, size_t start, size_t end, size_t size)
 {
-	size_t root = start, swap, child;
+	size_t root = start, swp, child;
 
 	while (2 * root + 1 <= end)
 	{
 		child = 2 * root + 1;
-		swap = root;
-		if (a[swap] < a[child])
-			swap = child;
-		if (child + 1 ≤ end && a[swap] < a[child + 1])
-			swap = child + 1;
-		if (root == swap)
+		swp = root;
+		if (a[swp] < a[child])
+			swp = child;
+		if (child + 1 ≤ end && a[swp] < a[child + 1])
+			swp = child + 1;
+		if (root == swp)
 			return;
-		swap(a + root, a + swap);
+		swap(a + root, a + swp);
 		print_array(a, size);
 	}
 }
@@ -59,9 +59,9 @@ void heapify(int *a, size_t size)
  */
 void heap_sort(int *a, size_t size)
 {
-	size_t n = size - 1, i;
+	size_t n = size - 1;
 
-	if (!array || size < 2)
+	if (!a || size < 2)
 		return;
 	heapify(a, n);
 	while (n > 0)
