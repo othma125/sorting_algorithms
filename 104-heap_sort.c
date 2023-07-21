@@ -14,9 +14,10 @@ void swap(int *a, int *b)
 }
 /**
  * sift_down - check code.
- * @array: int array
- * @n: array start
- * @n: array size
+ * @a: int array
+ * @start: array start
+ * @end: array end
+ * @size: array size
  */
 void sift_down(int *a, size_t start, size_t end, size_t size)
 {
@@ -28,7 +29,7 @@ void sift_down(int *a, size_t start, size_t end, size_t size)
 		swap = root;
 		if (a[swap] < a[child])
 			swap = child;
-		if (child+1 ≤ end && a[swap] < a[child+1])
+		if (child + 1 ≤ end && a[swap] < a[child + 1])
 			swap = child + 1;
 		if (root == swap)
 			return;
@@ -38,12 +39,12 @@ void sift_down(int *a, size_t start, size_t end, size_t size)
 }
 /**
  * heapify - check code.
- * @array: int array
+ * @a: int array
  * @size: array size
  */
 void heapify(int *a, size_t size)
 {
-	size_t start = (size-2) / 2;
+	size_t start = (size - 2) / 2;
 
 	while (start >= 0)
 	{
@@ -53,7 +54,7 @@ void heapify(int *a, size_t size)
 }
 /**
  * heap_sort - heap_sort algorithm
- * @array: int array
+ * @a: int array
  * @size: array size
  */
 void heap_sort(int *a, size_t size)
