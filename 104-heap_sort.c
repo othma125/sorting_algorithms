@@ -35,6 +35,7 @@ void sift_down(int *a, size_t start, size_t end, size_t size)
 			return;
 		swap(a + root, a + swp);
 		print_array(a, size);
+		root = swp;
 	}
 }
 /**
