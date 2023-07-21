@@ -19,9 +19,9 @@ void swap(int *a, int *b)
  * @end: array end
  * @size: array size
  */
-void sift_down(int *a, size_t start, size_t end, size_t size)
+void sift_down(int *a, int start, int end, size_t size)
 {
-	size_t root = start, swp, child;
+	int root = start, swp, child;
 
 	while (2 * root + 1 <= end)
 	{
@@ -60,7 +60,7 @@ void heapify(int *a, size_t size)
  */
 void heap_sort(int *a, size_t size)
 {
-	size_t n = size - 1;
+	int n = size - 1;
 
 	if (!a || size < 2)
 		return;
