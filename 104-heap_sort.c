@@ -43,7 +43,13 @@ void sift_down(int *a, size_t start, size_t end, size_t size)
  */
 void heapify(int *a, size_t size)
 {
-	
+	size_t start = (size-2) / 2;
+
+	while (start >= 0)
+	{
+		sift_down(a, start, size - 1, size);
+		start--;
+	}
 }
 /**
  * heap_sort - heap_sort algorithm
