@@ -22,10 +22,9 @@ void swap(int *a, int *b)
  */
 int partition(int *array, size_t size, int x, int y)
 {
-	int pivot = array[x];
-	int i = x - 1;
-	int j = y + 1;
+	int pivot, i = x - 1, j = y + 1;
 
+	pivot = array[(x + y) / 2];
 	while (1)
 	{
 		do {
