@@ -51,6 +51,8 @@ void bitonicMerge(int a[], int x, int y, int direction)
 			if (direction == (a[i] > a[i + k]))
 				swap(a + i, a + i + k);
 		}
+		print(a, x, y);
+		printf("\n");
 		bitonicMerge(a, x, k, direction);
 		bitonicMerge(a, x + k, k, direction);
 	}
@@ -72,8 +74,6 @@ void sort(int a[], int x, int y, int direction)
 		sort(a, x, k, 1);
 		sort(a, x + k, k, 0);
 		bitonicMerge(a, x, y, direction);
-		print(a, x, y);
-		printf("\n");
 	}
 }
 /**
