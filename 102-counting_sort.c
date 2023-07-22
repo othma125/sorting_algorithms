@@ -1,5 +1,4 @@
 #include "sort.h"
-#include <limits.h>
 
 /**
  * max - max value of an array.
@@ -9,10 +8,10 @@
  */
 int max(int *a, size_t size)
 {
-	int max = INT_MIN;
+	int max = a[0];
 	size_t i = 0;
 
-	for (i = 0; i < size; i++)
+	for (i = 1; i < size; i++)
 		if (max < a[i])
 			max = a[i];
 	return (max);
