@@ -57,8 +57,8 @@ void sort(int a[], int x, int y, int direction)
 	if (y > 1)
 	{
 		k = y / 2;
-		bitonicSort(a, x, k, 1);
-		bitonicSort(a, x + k, k, 0);
+		sort(a, x, k, 1);
+	        sort(a, x + k, k, 0);
 		bitonicMerge(a, x, y, direction);
 	}
 }
