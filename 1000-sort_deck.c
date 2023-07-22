@@ -74,7 +74,7 @@ void cocktail_sort_list(deck_node_t **list)
  */
 void sort_deck(deck_node_t **deck)
 {
-	if (!deck || !(*deck) || !(deck->next))
+	if (!deck || !(*deck) || !(*deck)->next)
 		return;
 	cocktail_sort_list(deck);
 }
