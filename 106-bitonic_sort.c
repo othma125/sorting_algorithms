@@ -72,6 +72,7 @@ void sort(int a[], int x, int y, int direction)
 		sort(a, x, k, 1);
 		sort(a, x + k, k, 0);
 		bitonicMerge(a, x, y, direction);
+		print(a, x, y);
 	}
 }
 /**
