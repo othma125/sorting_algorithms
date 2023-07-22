@@ -45,6 +45,7 @@ void count(int a[], size_t size, int p)
 	}
 	for (i = 0; (size_t)i < size; i++)
 		a[i] = c[i];
+	print_array(a, size);
 	free(c), free(b);
 }
 /**
