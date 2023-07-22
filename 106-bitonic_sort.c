@@ -58,10 +58,12 @@ void bitonicMerge(int a[], int x, int y, int direction)
 			if (direction == (a[i] > a[i + k]))
 				swap(a + i, a + i + k);
 		}
-		print(a, x, y, direction);
-		printf("\n");
 		bitonicMerge(a, x, k, direction);
+		print(a, x, k, direction);
+		printf("\n");
 		bitonicMerge(a, x + k, k, direction);
+		print(a, x + k, k, direction);
+		printf("\n");
 	}
 }
 /**
