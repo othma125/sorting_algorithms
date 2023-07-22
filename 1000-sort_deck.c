@@ -14,6 +14,10 @@ int cmpfunc(const void * c1, const void * c2)
 		return (card1->kind - card2->kind);
 	return (strcmp(card1->value, card2->value));
 }
+/**
+ * sort_deck - sort_deck algorithm
+ * @list: list
+ */
 void sort_deck(deck_node_t **deck)
 {
 }
