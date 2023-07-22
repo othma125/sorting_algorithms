@@ -59,7 +59,7 @@ void cocktail_sort_list(deck_node_t **list)
 			break;
 		for (; node->prev; node = node->prev)
 		{
-			if (cmpfunc(node, node->prev) < 0)
+			if (cmpfunc(node, node->prev) > 0)
 			{
 				swpd = 1;
 				swap_list(list, node->prev, node);
