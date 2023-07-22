@@ -35,10 +35,12 @@ void count(int a[], size_t size, int p)
 		count[(a[i] / p) % 10]++;
 	for (i = 1; i < 10; i++)
 		count[i] += count[i - 1];
-	for (i = 0; i < size; i++)
+	for (i = size - 1;; i--)
 	{
 		output[count[(a[i] / p) % 10] - 1] = a[i];
 		count[(a[i] / p) % 10]--;
+		if (i == 0)
+			break;
 	}
 	for (i = 0; i < size; i++)
 		a[i] = output[i];
