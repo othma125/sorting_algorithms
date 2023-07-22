@@ -12,14 +12,14 @@ void print(int *array, size_t i, size_t j, int dir)
 	int c = 0;
 	size_t l;
 
-	for (l = i; !dir && l <= j; l++)
+	for (l = i; dir && l <= j; l++)
 	{
 		if (c)
 			printf(", ");
 		c = 1;
 		printf("%d", array[l]);
 	}
-	for (l = j; dir && l >= i; l--)
+	for (l = j; !dir && l >= i; l--)
 	{
 		if (c)
 			printf(", ");
