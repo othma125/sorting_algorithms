@@ -22,16 +22,18 @@ void swap(int *a, int *b)
  */
 int partition(int *array, size_t size, int x, int y)
 {
-	int *pivot, i = x, j = y;
+	int *pivot, i = x - 1, j = y + 1;
 	int index = (x + y) / 2;
 
 	pivot = array + index;
 	while (1)
 	{
-		while (array[i] < *pivot && i < y)
+		do {
 			i++;
-		while (array[j] > *pivot && j > x)
+		} while (array[i] < *pivot)
+		do {
 			j--;
+		} while (array[j] > *pivot)
 		if (i >= j)
 		{
 			if (array[j] < *pivot)
