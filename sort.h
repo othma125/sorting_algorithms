@@ -31,6 +31,6 @@ void counting_sort(int *, size_t);
 void merge_sort(int *, size_t);
 void quick_sort_hoare(int *, size_t);
 void heap_sort(int *, size_t);
-
+void radix_sort(int *, size_t);
 
 #endif
