@@ -42,7 +42,7 @@ int partition(int *array, size_t size, int x, int y)
 			print_array(array, size);
 		}
 		else
-			return (i);
+			return (j);
 	}
 }
 
