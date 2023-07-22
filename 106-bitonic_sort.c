@@ -58,12 +58,13 @@ void bitonicMerge(int a[], int x, int y, int direction)
 		for (i = x; i < x + k; i++)
 		{
 			if (direction == (a[i] > a[i + k]))
+			{
 				swap(a + i, a + i + k);
+				print(a, i, i + k, direction);
+			}
 		}
 		bitonicMerge(a, x, k, direction);
-		print(a, x, k, direction);
 		bitonicMerge(a, x + k, k, direction);
-		print(a, x + k, k, direction);
 	}
 }
 /**
