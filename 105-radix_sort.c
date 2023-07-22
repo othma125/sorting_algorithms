@@ -25,13 +25,13 @@ int max(int *a, size_t size)
 void count(int a[], size_t size, int p)
 {
 	int *output, *count;
-	int i;
+	size_t i;
 
 	output = malloc(sizeof(int) * size);
 	count = malloc(sizeof(int) * 10);
-	for (i = 0; i < (int)size; i++)
+	for (i = 0; i < size; i++)
 		count[i] = 0;
-	for (i = 0; i < (int)size; i++)
+	for (i = 0; i < size; i++)
 		count[(a[i] / p) % 10]++;
 	for (i = 1; i < 10; i++)
 		count[i] += count[i - 1];
@@ -40,7 +40,7 @@ void count(int a[], size_t size, int p)
 		output[count[(a[i] / p) % 10] - 1] = a[i];
 		count[(a[i] / p) % 10]--;
 	}
-	for (i = 0; i < (int)size; i++)
+	for (i = 0; i < size; i++)
 		a[i] = output[i];
 	print_array(a, size);
 	free(count), free(output);
