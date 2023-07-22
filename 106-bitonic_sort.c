@@ -26,7 +26,8 @@ void print(int *array, size_t i, size_t j, int dir)
 		c = 1;
 		printf("%d", array[l]);
 	}
-	printf("\n");
+	if (c)
+		printf("\n");
 }
 /**
  * swap - Swap two integers in an array.
