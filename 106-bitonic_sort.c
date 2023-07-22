@@ -26,6 +26,7 @@ void print(int *array, size_t i, size_t j, int dir)
 		c = 1;
 		printf("%d", array[l]);
 	}
+	printf("\n");
 }
 /**
  * swap - Swap two integers in an array.
@@ -60,10 +61,8 @@ void bitonicMerge(int a[], int x, int y, int direction)
 		}
 		bitonicMerge(a, x, k, direction);
 		print(a, x, k, direction);
-		printf("\n");
 		bitonicMerge(a, x + k, k, direction);
 		print(a, x + k, k, direction);
-		printf("\n");
 	}
 }
 /**
