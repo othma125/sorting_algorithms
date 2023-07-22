@@ -18,8 +18,8 @@ void swap(int *a, int *b)
  */
 void compAndSwap(int a[], int i, int j, int direction) 
 { 
-  if (direction == (a[i] > a[j])) 
-    swap(a + i, a + j); 
+	if (direction == (a[i] > a[j])) 
+		swap(a + i, a + j); 
 } 
 /**
  * swap - Swap two integers in an array.
@@ -28,8 +28,8 @@ void compAndSwap(int a[], int i, int j, int direction)
  */
 void bitonicMerge(int a[], int x, int y, int direction) 
 {
-int k = y/2;
-int i;
+	int k = y/2;
+	int i;
 if (y > 1) 
 { 
 for (i = x; i < x + k; i++) 
