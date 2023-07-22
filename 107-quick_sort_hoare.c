@@ -30,7 +30,7 @@ int partition(int *array, size_t size, int x, int y)
 	{
 		do {
 			i++;
-		} while (array[i] < pivot && i < y);
+		} while (array[i] < pivot && i + 1 < y);
 		do {
 			j--;
 		} while (array[j] > pivot);
