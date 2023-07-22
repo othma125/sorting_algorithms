@@ -12,14 +12,14 @@ void print(int *array, size_t i, size_t j, int dir)
 	int c = 0;
 	size_t l;
 
-	for (l = i; dir && l <= j; l++)
+	for (l = i; !dir && l <= j; l++)
 	{
 		if (c)
 			printf(", ");
 		c = 1;
 		printf("%d", array[l]);
 	}
-	for (l = j; !dir && l >= i; l--)
+	for (l = j; dir && l >= i; l--)
 	{
 		if (c)
 			printf(", ");
@@ -74,15 +74,15 @@ void bitonicMerge(int a[], int x, int y, int direction)
  * @y: up bound
  * @direction: sorting direction
  */
-void sort(int a[], int x, int y, int direction)
+void bitonicSort(int a[], int x, int y, int direction)
 {
 	int k;
 
 	if (y > 1)
 	{
 		k = y / 2;
-		sort(a, x, k, 1);
-		sort(a, x + k, k, 0);
+		bitonicSort(a, x, k, 1);
+		bitonicSort(a, x + k, k, 0);
 		bitonicMerge(a, x, y, direction);
 	}
 }
@@ -93,5 +93,5 @@ void sort(int a[], int x, int y, int direction)
  */
 void bitonic_sort(int a[], size_t size)
 {
-	sort(a, 0, size, 1);
+	bitonicSort(a, 0, size, 1);
 }
