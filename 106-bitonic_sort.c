@@ -12,54 +12,62 @@ void swap(int *a, int *b)
 	*b = aux;
 }
 /**
- * swap - Swap two integers in an array.
- * @a: The first integer to swap.
- * @b: The second integer to swap.
+ * compAndSwap - check code.
+ * @a: array.
+ * @x: low bound
+ * @y: up bound
+ * @direction: sorting direction
  */
-void compAndSwap(int a[], int i, int j, int direction) 
+void compAndSwap(int a[], int x, int y, int direction) 
 { 
-	if (direction == (a[i] > a[j])) 
-		swap(a + i, a + j); 
+	if (direction == (a[x] > a[y])) 
+		swap(a + x, a + y); 
 } 
 /**
- * swap - Swap two integers in an array.
- * @a: The first integer to swap.
- * @b: The second integer to swap.
+ * bitonicMerge - check code.
+ * @a: array.
+ * @x: low bound
+ * @y: up bound
+ * @direction: sorting direction
  */
 void bitonicMerge(int a[], int x, int y, int direction) 
 {
-	int k = y/2;
+	int k = y / 2;
 	int i;
-if (y > 1) 
-{ 
-for (i = x; i < x + k; i++) 
-compAndSwap(a, i, i + k, direction); 
-bitonicMerge(a, x, k, direction); 
-bitonicMerge(a, x + k, k, direction); 
-} 
+
+	if (y > 1)
+	{
+		for (i = x; i < x + k; i++)
+			compAndSwap(a, i, i + k, direction);
+		bitonicMerge(a, x, k, direction);
+		bitonicMerge(a, x + k, k, direction);
+	}
 }
 /**
- * swap - Swap two integers in an array.
- * @a: The first integer to swap.
- * @b: The second integer to swap.
+ * sort - check code.
+ * @a: array.
+ * @x: low bound
+ * @y: up bound
+ * @direction: sorting direction
  */
-void sort(int a[],int x, int y, int direction) 
+void sort(int a[], int x, int y, int direction) 
 {
-  int k;
-	if (y>1) 
-	{ 
-k = y/2; 
-bitonicSort(a, x, k, 1); 
-bitonicSort(a, x + k, k, 0); 
-bitonicMerge(a, x, y, direction); 
-	} 
+	int k;
+
+	if (y > 1)
+	{
+		k = y / 2;
+		bitonicSort(a, x, k, 1);
+		bitonicSort(a, x + k, k, 0);
+		bitonicMerge(a, x, y, direction);
+	}
 }
 /**
- * swap - Swap two integers in an array.
- * @a: The first integer to swap.
- * @b: The second integer to swap.
+ * bitonic_sort - bitonic_sort algorithm.
+ * @a: array.
+ * @size: array size
  */
-void bitonic_sort(int a[], size_t size) 
-{ 
-sort(a, 0, size, 1); 
-} 
+void bitonic_sort(int a[], size_t size)
+{
+	sort(a, 0, size, 1);
+}
