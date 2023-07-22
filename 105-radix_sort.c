@@ -24,29 +24,26 @@ int max(int *a, size_t size)
  */
 void count(int a[], size_t size, int p)
 {
-	int mx, *b, *c;
+	int *output, *count;
 	int i;
 
-	mx = max(a, size);
-	b = malloc(sizeof(int) * (mx + 1));
-	for (i = 0; i <= mx; i++)
-		b[i] = 0;
-	for (i = 0; (size_t)i < size; i++)
-		b[(a[i] / p) % 10] += 1;
-	for (i = 1; i <= mx; i++)
-		b[i] += b[i - 1];
-	c = malloc(sizeof(int) * size);
-	for (i = 0; (size_t)i < size; i++)
-		c[i] = 0;
-	for (i = 0; (size_t)i < size; i++)
+	output = malloc(sizeof(int) * size);  
+	count = malloc(sizeof(int) * 10);
+	for(int i = 0; i < size; i++)
+        	count[i]=0;
+	for (i = 0; i < size; i++)
+        	count[(aa[i] / p) % 10]++;
+	for (i = 1; i < 10; i++)
+		count[i] += count[i - 1];
+	for (i = size - 1; i >= 0; i--)
 	{
-		c[b[(a[i] / p) % 10] - 1] = a[i];
-		b[(a[i] / p) % 10] -= 1;
+		output[count[(a[i] / p) % 10] - 1] = a[i];
+		count[(a[i] / p) % 10]--;
 	}
-	for (i = 0; (size_t)i < size; i++)
-		a[i] = c[i];
+	for (i = 0; i < n; i++)
+		a[i] = output[i];
 	print_array(a, size);
-	free(c), free(b);
+	free(count), free(output);
 }
 /**
  * radix_sort - radix algorithm.
@@ -57,11 +54,11 @@ void count(int a[], size_t size, int p)
 void radix_sort(int a[], size_t size)
 {
 	int mx;
-	int i;
+	int pow;
 
 	if (!a || size < 2)
 		return;
 	mx = max(a, size);
-	for (i = 1; mx / i > 0; i *= 10)
+	for (pow = 1; mx / pow > 0; pow *= 10)
 		count(a, size, i);
 }
