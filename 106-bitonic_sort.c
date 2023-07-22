@@ -12,18 +12,6 @@ void swap(int *a, int *b)
 	*b = aux;
 }
 /**
- * compAndSwap - check code.
- * @a: array.
- * @x: low bound
- * @y: up bound
- * @direction: sorting direction
- */
-void compAndSwap(int a[], int x, int y, int direction)
-{
-	if (direction == (a[x] > a[y]))
-		swap(a + x, a + y);
-}
-/**
  * bitonicMerge - check code.
  * @a: array.
  * @x: low bound
@@ -38,7 +26,10 @@ void bitonicMerge(int a[], int x, int y, int direction)
 	if (y > 1)
 	{
 		for (i = x; i < x + k; i++)
-			compAndSwap(a, i, i + k, direction);
+		{
+			if (direction == (a[i] > a[i + k]))
+				swap(a + i, a + i + k)
+		}
 		bitonicMerge(a, x, k, direction);
 		bitonicMerge(a, x + k, k, direction);
 	}
