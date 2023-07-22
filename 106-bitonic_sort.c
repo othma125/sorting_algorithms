@@ -1,4 +1,25 @@
 #include "sort.h"
+#include <stdio.h>
+
+/**
+ * print - check code.
+ * @array: The first integer to swap.
+ * @i: low bound index.
+ * @j: up bound index.
+ */
+void print(int *array, size_t i, size_t j)
+{
+	int c = 0;
+	size_t l;
+
+	for (l = i; l < j; l++)
+	{
+		if (c)
+			printf(", ");
+		c = 1;
+		printf("%d", array[l]);
+	}
+}
 /**
  * swap - Swap two integers in an array.
  * @a: The first integer to swap.
