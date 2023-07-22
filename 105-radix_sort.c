@@ -29,11 +29,11 @@ void count(int a[], size_t size, int p)
 
 	mx = max(a, size);
 	b = malloc(sizeof(int) * (mx + 1));
-	for (i = 0; i < mx + 1; i++)
+	for (i = 0; i <= mx; i++)
 		b[i] = 0;
 	for (i = 0; (size_t)i < size; i++)
 		b[(a[i] / p) % 10] += 1;
-	for (i = 1; i < mx + 1; i++)
+	for (i = 1; i <= mx; i++)
 		b[i] += b[i - 1];
 	c = malloc(sizeof(int) * size);
 	for (i = 0; (size_t)i < size; i++)
