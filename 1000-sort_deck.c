@@ -43,6 +43,7 @@ void cocktail_sort_list(deck_node_t **list)
 {
 	deck_node_t *node;
 	int swpd;
+
 	node = *list;
 	do {
 		swpd = 0;
