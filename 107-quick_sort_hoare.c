@@ -36,9 +36,9 @@ int partition(int *array, size_t size, int x, int y)
 		} while (array[j] > pivot);
 		if (i > j)
 			return (j);
-		if (array[j] < pivot)
+		if (array[i] > pivot)
 		{
-			swap(array + i, array + j);
+			swap(array + i, array + index);
 			print_array(array, size);
 		}
 	}
