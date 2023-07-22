@@ -28,16 +28,24 @@ int partition(int *array, size_t size, int x, int y)
 	pivot = array[index];
 	while (1)
 	{
-		while (array[i] < pivot && i < index)
+		while (array[i] < pivot && i < y)
 			i++;
-		while (array[j] > pivot && j > index)
+		while (array[j] > pivot && j > x)
 			j--;
 		if (i >= j)
 			return (j);
 		swap(array + i, array + j);
 		print_array(array, size);
-		i++;
-		j--;
+		if (array[i] > pivot)
+		{
+			swap(array + i, array + index);
+			print_array(array, size);
+		}
+		if (array[j] < pivot)
+		{
+			swap(array + j, array + index);
+			print_array(array, size);
+		}
 	}
 }
 
