@@ -44,7 +44,6 @@ void count(int a[], size_t size, int p)
 	}
 	for (i = 0; i < size; i++)
 		a[i] = output[i];
-	print_array(a, size);
 	free(count), free(output);
 }
 /**
@@ -62,5 +61,8 @@ void radix_sort(int a[], size_t size)
 		return;
 	mx = max(a, size);
 	for (pow = 1; mx / pow > 0; pow *= 10)
+	{
 		count(a, size, pow);
+		print_array(a, size);
+	}
 }
