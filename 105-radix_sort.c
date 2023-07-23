@@ -7,10 +7,10 @@
  */
 int max(int *a, size_t size)
 {
-	int mx = a[0];
+	int mx = 0;
 	size_t i = 1;
 
-	for (i = 1; i < size; i++)
+	for (i = 0; i < size; i++)
 		if (mx < a[i])
 			mx = a[i];
 	return (mx);
