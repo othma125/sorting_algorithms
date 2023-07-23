@@ -7,19 +7,12 @@
  * @i: low bound index.
  * @j: up bound index.
  */
-void print(int *array, size_t i, size_t j, int dir)
+void print(int *array, size_t i, size_t j)
 {
 	int c = 0;
 	size_t l;
 
-	for (l = i; dir && l <= j; l++)
-	{
-		if (c)
-			printf(", ");
-		c = 1;
-		printf("%d", array[l]);
-	}
-	for (l = j; !dir && l >= i; l--)
+	for (l = i; l <= j; l++)
 	{
 		if (c)
 			printf(", ");
@@ -56,14 +49,14 @@ void bitonicMerge(int a[], int x, int y, int direction, size_t size)
 	if (y > 1)
 	{
 		printf("Merging [%d/%ld] (%s):\n", k, size, (direction) ? "UP" : "DOWN");
-		print(a, x, x + k, direction);
+		print(a, x, x + k);
 		for (i = x; i < x + k; i++)
 		{
 			if (direction == (a[i] > a[i + k]))
 				swap(a + i, a + i + k);
 		}
 		printf("Result [%d/%ld] (%s):\n", k, size, (direction) ? "UP" : "DOWN");
-		print(a, x, x + k, direction);
+		print(a, x, x + k);
 		bitonicMerge(a, x, k, direction, size);
 		bitonicMerge(a, x + k, k, direction, size);
 	}
