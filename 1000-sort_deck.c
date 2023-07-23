@@ -29,9 +29,9 @@ int cmpfunc(const card_t *card1, const card_t *card2)
 		v2 = 13;
 	else
 		v2 = atoi(card2->value);
-	if (v2 == v1)
-		return (card1->kind - card2->kind);
-	return (v1 - v2);
+	if (card1->kind == card2->kind)
+		return (v1 - v2);
+	return (card1->kind - card2->kind);
 }
 
 /**
