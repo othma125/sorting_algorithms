@@ -56,7 +56,7 @@ void bitonicMerge(int a[], int x, int y, int direction, size_t size)
 	if (y > 1)
 	{
 		printf("Merging [%d/%ld] (%s):\n", k, size, (direction) ? "UP" : "DOWN");
-		print(a, i, i + k, direction);
+		print(a, x, x + k, direction);
 		for (i = x; i < x + k; i++)
 		{
 			if (direction == (a[i] > a[i + k]))
