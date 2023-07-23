@@ -1,25 +1,5 @@
 #include "sort.h"
-#include <stdio.h>
 
-/**
- * print - check code.
- * @array: The first integer to swap.
- * @i: low bound index.
- * @j: up bound index.
- */
-void print(int *array, size_t i, size_t j)
-{
-	int c = 0;
-	size_t l;
-
-	for (l = i; l < j; l++)
-	{
-		if (c)
-			printf(", ");
-		c = 1;
-		printf("%d", array[l]);
-	}
-}
 /**
  * TopDownMerge - check code.
  * @a: The first integer to swap.
@@ -48,11 +28,11 @@ void TopDownMerge(int *b, int *a, size_t i, size_t k, size_t j)
 		l++;
 	}
 	printf("[left]: ");
-	print(a, i, k);
+	print_array(a + i, k);
 	printf("\n[right]: ");
-	print(a, k, j);
+	print_array(a + k, j);
 	printf("\n[Done]: ");
-	print(b, i, j);
+	print_array(b + i, j);
 	printf("\n");
 }
 /**
