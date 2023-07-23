@@ -65,8 +65,8 @@ void bitonicMerge(int a[], int x, int y, int direction, size_t size)
 			}
 		}
 		printf("Result [%d/%ld] (%s):\n", k, size, (direction) ? "UP" : "DOWN");
-		bitonicMerge(a, x, k, direction);
-		bitonicMerge(a, x + k, k, direction);
+		bitonicMerge(a, x, k, direction, size);
+		bitonicMerge(a, x + k, k, direction, size);
 	}
 }
 /**
