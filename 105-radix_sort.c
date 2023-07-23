@@ -29,6 +29,8 @@ void count(int a[], size_t size, int p)
 
 	output = malloc(sizeof(int) * size);
 	count = malloc(sizeof(int) * 10);
+	if (!output || !count)
+		return;
 	for (i = 0; i < size; i++)
 		count[i] = 0;
 	for (i = 0; i < size; i++)
