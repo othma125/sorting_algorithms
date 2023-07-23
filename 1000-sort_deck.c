@@ -7,6 +7,13 @@
  */
 int cmpfunc(const card_t *card1, const card_t *card2)
 {
+	values_t v[] = {
+		{"Ace", 1},
+		{"Jack", 11},
+		{"Queen", 12},
+		{"King", 13}
+	};
+
 	if (strcmp(card1->value, card2->value) == 0)
 		return (card1->kind - card2->kind);
 	return (strcmp(card1->value, card2->value));
