@@ -1,27 +1,4 @@
 #include "sort.h"
-#include <stdio.h>
-
-/**
- * print - check code.
- * @array: The first integer to swap.
- * @i: low bound index.
- * @j: up bound index.
- */
-void print(int *array, size_t i, size_t j)
-{
-	int c = 0;
-	size_t l;
-
-	for (l = i; l <= j; l++)
-	{
-		if (c)
-			printf(", ");
-		c = 1;
-		printf("%d", array[l]);
-	}
-	if (c)
-		printf("\n");
-}
 /**
  * swap - Swap two integers in an array.
  * @a: The first integer to swap.
@@ -40,6 +17,7 @@ void swap(int *a, int *b)
  * @x: low bound
  * @y: up bound
  * @direction: sorting direction
+ * @size: array size
  */
 void bitonicMerge(int a[], int x, int y, int direction, size_t size)
 {
@@ -63,6 +41,7 @@ void bitonicMerge(int a[], int x, int y, int direction, size_t size)
  * @x: low bound
  * @y: up bound
  * @direction: sorting direction
+ * @size: array size
  */
 void bitonicSort(int a[], int x, int y, int direction, size_t size)
 {
