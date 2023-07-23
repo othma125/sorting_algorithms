@@ -1,8 +1,8 @@
 #include "deck.h"
 /**
  * cmpfunc - comparaison function.
- * @c1: first card.
- * @c2: second card.
+ * @card1: first card.
+ * @card2: second card.
  * Return: difference in value.
  */
 int cmpfunc(const card_t *card1, const card_t *card2)
@@ -90,7 +90,7 @@ void cocktail_sort_list(deck_node_t **list)
 }
 /**
  * sort_deck - sort_deck algorithm
- * @list: list
+ * @deck: list
  */
 void sort_deck(deck_node_t **deck)
 {
