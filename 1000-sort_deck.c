@@ -60,7 +60,7 @@ void swap_list(deck_node_t **list, deck_node_t *node1, deck_node_t *node2)
  */
 void cocktail_sort_list(deck_node_t **list)
 {
-	deck_node_t *node;
+	deck_node_t *node, *next_n, *prev_n;
 	int swpd;
 
 	node = *list;
@@ -71,8 +71,9 @@ void cocktail_sort_list(deck_node_t **list)
 			if (cmpfunc(node->card, node->next->card) < 0)
 			{
 				swpd = 1;
-				swap_list(list, node, node->next);
-				node = node->next;
+				next_n = node->next;
+				swap_list(list, node, next_n);
+				node = next_n;
 			}
 		}
 		if (!swpd)
@@ -82,8 +83,9 @@ void cocktail_sort_list(deck_node_t **list)
 			if (cmpfunc(node->card, node->prev->card) > 0)
 			{
 				swpd = 1;
-				swap_list(list, node->prev, node);
-				node = node->prev;
+				prev_n = node->prev;
+				swap_list(list, prev_n, node);
+				node = prev_n;
 			}
 		}
 	} while (swpd);
