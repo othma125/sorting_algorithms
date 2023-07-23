@@ -7,9 +7,31 @@
  */
 int cmpfunc(const card_t *card1, const card_t *card2)
 {
-	if (strcmp(card1->value, card2->value) == 0)
+	int v1, v2;
+
+	if (!strcmp(card1->value, "Ace"))
+		v1 = 1;
+	else if (!strcmp(card1->value, "Jack"))
+		v1 = 11;
+	else if (!strcmp(card1->value, "Queen"))
+		v1 = 12;
+	else if (!strcmp(card1->value, "King"))
+		v1 = 13;
+	else
+		v1 = atoi(card1->value);
+	if (!strcmp(card2->value, "Ace"))
+		v2 = 1;
+	else if (!strcmp(card2->value, "Jack"))
+		v2 = 11;
+	else if (!strcmp(card2->value, "Queen"))
+		v2 = 12;
+	else if (!strcmp(card2->value, "King"))
+		v2 = 13;
+	else
+		v2 = atoi(card2->value);
+	if (v2 == v1)
 		return (card1->kind - card2->kind);
-	return (strcmp(card1->value, card2->value));
+	return (v1 - v2);
 }
 
 /**
