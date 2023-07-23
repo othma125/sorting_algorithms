@@ -36,7 +36,7 @@ void bitonicMerge(int a[], int x, int y, int direction, size_t size)
 	}
 }
 /**
- * sort - check code.
+ * bitonicSort - check code.
  * @a: array.
  * @x: low bound
  * @y: up bound
