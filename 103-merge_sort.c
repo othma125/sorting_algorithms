@@ -9,16 +9,16 @@
  */
 void print(int *array, size_t i, size_t j)
 {
-        int c = 0;
-        size_t l;
-
-        for (l = i; l < j; l++)
-        {
-                if (c)
-                        printf(", ");
-                c = 1;
-                printf("%d", array[l]);
-        }
+	int c = 0;
+	size_t l;
+	
+	for (l = i; l < j; l++)
+	{
+		if (c)
+			printf(", ");
+		c = 1;
+		printf("%d", array[l]);
+	}
 }
 
 /**
