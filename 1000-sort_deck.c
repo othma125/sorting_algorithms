@@ -68,7 +68,7 @@ void cocktail_sort_list(deck_node_t **list)
 		swpd = 0;
 		for (; node->next; node = node->next)
 		{
-			if (cmpfunc(node->card, node->next->card) < 0)
+			if (cmpfunc(node->card, node->next->card) > 0)
 			{
 				swpd = 1;
 				next_n = node->next;
@@ -80,7 +80,7 @@ void cocktail_sort_list(deck_node_t **list)
 			break;
 		for (; node->prev; node = node->prev)
 		{
-			if (cmpfunc(node->card, node->prev->card) > 0)
+			if (cmpfunc(node->card, node->prev->card) < 0)
 			{
 				swpd = 1;
 				prev_n = node->prev;
